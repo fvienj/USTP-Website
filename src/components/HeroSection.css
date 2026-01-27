@@ -92,6 +92,76 @@
   height: 8.2vw;
   right: 2%;
   top: 86%;
+  top: 86%;
+}
+
+/* Mobile Mesh Gradient Background */
+.mobile-hero-background {
+  display: none;
+  /* Hidden on desktop */
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  background: #ffffff;
+}
+
+.mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.6;
+  animation: float-mesh 10s infinite ease-in-out alternate;
+}
+
+.blob-blue {
+  background: #498CF6;
+  width: 60vw;
+  height: 60vw;
+  top: -10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.blob-red {
+  background: #EB483B;
+  width: 50vw;
+  height: 50vw;
+  top: 20%;
+  right: -10%;
+  animation-delay: -2s;
+}
+
+.blob-yellow {
+  background: #FBC10E;
+  width: 40vw;
+  height: 40vw;
+  bottom: -10%;
+  left: 20%;
+  animation-delay: -4s;
+}
+
+.blob-green {
+  background: #4EA865;
+  width: 45vw;
+  height: 45vw;
+  bottom: 10%;
+  right: 10%;
+  animation-delay: -6s;
+}
+
+@keyframes float-mesh {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(10px, -20px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-10px, 10px) scale(0.95);
+  }
 }
 
 .hero-content {
@@ -115,7 +185,12 @@
   .hero-section h1 {
     font-size: 4.5rem;
   }
-  .circle-1, .circle-2, .circle-3, .circle-4, .circle-8 {
+
+  .circle-1,
+  .circle-2,
+  .circle-3,
+  .circle-4,
+  .circle-8 {
     display: none;
   }
 }
@@ -130,17 +205,32 @@
   .hero-section h1 {
     font-size: 3.5rem;
   }
-  .circle-5, .circle-6 {
+
+  .circle-5,
+  .circle-6 {
     display: none;
   }
 }
 
 @media (max-width: 768px) {
-  .hero-section h1 {
-    font-size: 4rem;
+  .hero-section {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .circle-5, .circle-6 {
+
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+
+  .hero-circles {
     display: none;
+  }
+
+  .mobile-hero-background {
+    display: block;
+    /* Show mesh gradient on mobile */
   }
 }
 
@@ -148,7 +238,9 @@
   .hero-section h1 {
     font-size: 2.5rem;
   }
-  .circle-1, .circle-2, .circle-3, .circle-4, .circle-8 {
+
+  /* Ensure circles are definitely hidden */
+  .hero-circles {
     display: none;
   }
 }

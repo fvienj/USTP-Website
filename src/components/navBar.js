@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import './navBar.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import Logo from '../assets/logo.svg'
+import { FaHome, FaNewspaper, FaCalendarAlt, FaInfoCircle, FaUsers } from 'react-icons/fa'
+import Logo from '../assets/logo.png'
 
 export default function NavigationBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -107,6 +108,42 @@ export default function NavigationBar() {
                     </button>
                 </div>
             </div>
+
+            {/* Mobile Bottom Navigation */}
+            <nav className="mobile-bottom-nav">
+                <NavLink
+                    to="/"
+                    className={({ isActive }) => isActive ? "mobile-nav-item active" : "mobile-nav-item"}
+                    onClick={handleNavClick('/')}
+                >
+                    <FaHome className="nav-icon" />
+                    <span>Home</span>
+                </NavLink>
+                <NavLink
+                    to="/news"
+                    className={({ isActive }) => isActive ? "mobile-nav-item active" : "mobile-nav-item"}
+                    onClick={handleNavClick('/news')}
+                >
+                    <FaNewspaper className="nav-icon" />
+                    <span>News</span>
+                </NavLink>
+                <NavLink
+                    to="/events"
+                    className={({ isActive }) => isActive ? "mobile-nav-item active" : "mobile-nav-item"}
+                    onClick={handleNavClick('/events')}
+                >
+                    <FaCalendarAlt className="nav-icon" />
+                    <span>Events</span>
+                </NavLink>
+                <NavLink
+                    to="/about-us"
+                    className={({ isActive }) => isActive ? "mobile-nav-item active" : "mobile-nav-item"}
+                    onClick={handleNavClick('/about-us')}
+                >
+                    <FaInfoCircle className="nav-icon" />
+                    <span>About</span>
+                </NavLink>
+            </nav>
 
             <div className={`menu-overlay ${isMenuOpen ? 'active' : ''}`} onClick={closeMenu}></div>
         </>
